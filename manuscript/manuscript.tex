@@ -1,0 +1,731 @@
+\documentclass[man]{apa6}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Who Needs Privacy?},
+            pdfauthor={Tobias Dienlin~\& Miriam Metzger},
+            pdfkeywords={keywords},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+
+  \title{Who Needs Privacy?}
+    \author{Tobias Dienlin\textsuperscript{1}~\& Miriam Metzger\textsuperscript{1,2}}
+    \date{}
+  
+\shorttitle{Who Needs Privacy?}
+\affiliation{
+\vspace{0.5cm}
+\textsuperscript{1} University of Hohenheim\\\textsuperscript{2} University of California, Santa Barbara}
+\keywords{keywords\newline\indent Word count: X}
+\usepackage{csquotes}
+\usepackage{upgreek}
+\captionsetup{font=singlespacing,justification=justified}
+
+\usepackage{longtable}
+\usepackage{lscape}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage[flushleft]{threeparttable}
+\usepackage{threeparttablex}
+
+\newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
+
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+
+
+\DeclareDelayedFloatFlavor{ThreePartTable}{table}
+\DeclareDelayedFloatFlavor{lltable}{table}
+\DeclareDelayedFloatFlavor*{longtable}{table}
+\makeatletter
+\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
+\makeatother
+\usepackage{lineno}
+
+\linenumbers
+\setlength{\parskip}{0em}
+\raggedbottom
+
+\authornote{Add complete departmental affiliations for each
+author here. Each new line herein must be indented, like this line.
+
+Enter author note here.
+
+Correspondence concerning this article should be addressed to Tobias
+Dienlin, University of Hohenheim, Department of Media Psychology (540F).
+E-mail:
+\href{mailto:tobias.dienlin@uni-hohenheim.de}{\nolinkurl{tobias.dienlin@uni-hohenheim.de}}}
+
+\abstract{
+Objective: This study analyzes how personality relates to peoples'
+desire for privacy. Specifically, we investigated whether the syllogism
+``I don't mind surveillance because I have nothing to hide'' is correct:
+Do people who lack integrity (given they have something to hide) indeed
+desire more privacy?
+
+Method: Study 1 featured an online questionnaire (\emph{N} = 268,
+\emph{M}\textsubscript{age} = 20 years, 72\% female) and Study 2 a
+laboratory experiment (\emph{N} = 87, \emph{M}\textsubscript{age} = 20
+years, 51\% female), where participants wrote an essay about past
+negative, positive, or neutral behaviors to analyze effects on desire
+for privacy.
+
+Results: Study 1 showed that respondents who are more shy, less anxious,
+and more risk averse desired more privacy. Respondents who self-reported
+lacking integrity reported desiring more privacy from government and
+more anonymity. Study 2 replicated these results and showed a
+statistical trend (\emph{p} = .052) that writing about negative past
+behaviors increased desire for interpersonal privacy. Moreover, the
+integrity IAT showed significant relations with desire for privacy from
+government.
+
+Conclusion: It is possible to predict peoples' desire for privacy based
+on their lack of integrity. However, other neutral personality facets
+also explain desire for privacy. Hence, putting everyone who desires
+privacy under general suspicion would be incorrect.
+
+
+}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\begin{document}
+\maketitle
+
+In his novel \emph{The Circle}, ({\textbf{???}}) describes a dystopian
+society in which people are gradually forfeiting their privacy. People
+decide to become \enquote{transparent}, which means that they start
+carrying a small camera around the neck in order to broadcast their
+daily lives to the Internet. Eventually, this causes a societal
+upheaval: \enquote{The pressure on those who hadn't gone transparent
+went from polite to oppressive. The question, from pundits and
+constituents, was obvious and loud: If you aren't transparent, what are
+you hiding?} ({\textbf{???}}). The main argument being offered to
+justify the surveillance is: \enquote{If you have nothing to hide, you
+have nothing to fear.} This syllogism is familiar, given that it
+commonly appears in also nonfictional conversations ({\textbf{???}}).
+Consider, for example, the following tweet: \enquote{I don't download
+illegally. I don't have anything on my comp{[}uter{]} to hide. Hell, I'm
+sure the \#NSA gave up on me years ago.} ({\textbf{???}}).
+
+Why do people desire privacy? To date there is only little research on
+why people desire privacy and how the desire for privacy can be
+predicted by aspects of personality. For example, and to the best of our
+knowledge, so far no study exists that has analyzed the nothing-to-hide
+argument from a scientific and empirical perspective. Why do some people
+not care whether government agencies such as the NSA are collecting
+their data ({\textbf{???}}), and why do others protest vehemently in
+order to protect their privacy?
+
+Answering this question is important: Given that government agencies are
+collecting large amounts of data hoping to reduce criminality and
+terrorism, and given that government agencies are collecting this data
+preemptively and without concrete suspicions, it is relevant to find out
+whether this practice of mass surveillance can be justified based on the
+nothing-to-hide argument. As a result, the main question of this paper
+is: Do people who desire more privacy really have more to hide and, more
+generally, what are personality facets that determine peoples' overall
+desire for privacy?
+
+\hypertarget{desire-for-privacy}{%
+\subsection{Desire for Privacy}\label{desire-for-privacy}}
+
+Privacy captures the extent of voluntary withdrawal from others (Westin,
+1967). Several models suggest that privacy is a multi-dimensional
+concept: For example, in a theory-driven treatise ({\textbf{???}})
+argued that privacy has four dimensions: informational, social,
+psychological, and physical privacy. Pedersen (1979), by contrast, did
+an empirical factor analysis (initially starting with 94 items) and
+suggested that privacy exists on six dimensions: reserve, isolation,
+solitude, intimacy with friends, intimacy with family, and anonymity. In
+addition, Schwartz (1968) differentiated between horizontal and vertical
+privacy: Whereas horizontal privacy captures withdrawal from peers,
+vertical privacy refers to withdrawal from superiors or institutions
+(e.g., government agencies). Next to being multi-dimensional, privacy is
+also contingent (Dienlin, 2014): One can, for example, distinguish
+between the objective privacy context, the subsequent subjective
+perception of privacy, the psychological desire for privacy (which is
+both a situational and dispositional need), and the resulting privacy
+behavior (as represented by self-disclosure). For the purpose of this
+study, we combine the aforementioned theories and focus on (a) vertical
+privacy with regard to the desire for withdrawal from government
+surveillance, (b) horizontal privacy in terms of the desire for
+withdrawal from peers, friends, or acquaintances, and (c) both
+horizontal and vertical privacy as captured by the general desire for
+anonymity.
+
+\hypertarget{the-relation-between-integrity-and-desire-for-privacy}{%
+\subsubsection{The relation between integrity and desire for
+privacy}\label{the-relation-between-integrity-and-desire-for-privacy}}
+
+Which specific aspects of personality help predict desire for privacy?
+At its core, the nothing-to-hide argument implies that lack of integrity
+is an important predictor of why people desire privacy. This becomes
+especially apparent when we consider the definition of Solove's (2007)
+nothing-to-hide argument (notably, Solove is a strong critic of the
+nothing-to-hide argument):
+
+The NSA surveillance, data mining, or other government information
+gathering programs will result in the disclosure of particular pieces of
+information to a few government officials, or perhaps only to government
+computers. This very limited disclosure of the particular information
+involved is not likely to be threatening to the privacy of law-abiding
+citizens. Only those who are engaged in illegal activities have a reason
+to hide this information. {[}({\textbf{???}}); p.~753{]}
+
+This definition helps illustrate the link between lack of integrity and
+desire for privacy: People who have \enquote{engaged in illegal
+activities} can be considered, by definition, to lack integrity
+({\textbf{???}}), which is why they have a reason \enquote{to hide this
+information} (or, in other words, to desire more privacy). In terms of a
+scientific definition of integrity there is no real consensus, however
+most scholars agree that integrity \enquote{incorporates a tendency to
+comply with social norms, avoid deviant behavior, and embrace a sense of
+justice, truthfulness, and fairness} {[}({\textbf{???}}); p.~82{]}.
+
+Several theoretical arguments exist why lack of integrity might
+correlate with desire for privacy. In general, any self-disclosure is a
+potential risk because others might disagree, disapprove, or misuse the
+information in other contexts ({\textbf{???}}). Privacy regulation
+theory showed that if self-disclosures are too risky, people raise their
+desired level of privacy, intensify their boundary regulation, and
+employ more mechanisms to seclude and protect themselves
+({\textbf{???}}). In traditional contexts, this could range from
+moderate behaviors like closing doors, to extreme behaviors such as
+physically tossing someone out of the room ({\textbf{???}}). In modern
+contexts, protecting one's privacy can mean to avoid photographs or to
+deliberately shun public places that have surveillance cameras. People
+who have actually committed something bad, treacherous, or illegal
+become even more vulnerable and face a significant risk of
+self-disclosure, because others will surely disapprove of these
+activities ({\textbf{???}}). Hence, the foregoing arguments illuminate
+an indirect link between integrity and desire for privacy: By
+definition, people who participate in negative activities are considered
+to lack integrity ({\textbf{???}}). People who have engaged in negative
+activities have, by definition, more to hide, and disclosures concerning
+those activities pose a high risk. Because of this increased risk,
+people will arguably desire more privacy, as a means to mitigate their
+felt risk ({\textbf{???}}). In this way, the current research extends
+Altman's privacy regulation theory (1976) by suggesting that lack of
+integrity is an important yet unexamined factor that could increase
+peoples' desired level of privacy.
+
+A few studies can be found that imply a relation between privacy and
+integrity. For example, several studies found that surveillance reduces
+cheating behaviors ({\textbf{???}}, Covey.1989). ({\textbf{???}}) asked
+students to solve an impossible maze. In the high surveillance
+condition, the experimenter stood in front of the students and closely
+monitored their behavior. In the low surveillance condition, the
+experimenter stood behind the students, did not monitor their behavior,
+and visual dividers were used to block the experimenter's view of the
+students. Results showed that students were more likely to cheat in the
+low surveillance condition, suggesting that in situations of
+surveillance (i.e., less privacy), people show fewer cheating behaviors
+(i.e., more integrity). Similarly, people are more likely to prevent
+others from stealing when security cameras are visible ({\textbf{???}}),
+which is also a sign of higher integrity. Next, in a longitudinal sample
+with 457 respondents in Germany ({\textbf{???}}), people who reported
+needing more privacy were less satisfied with their lives (\emph{r} =
+-.47), had more (\emph{r} = .41) and less positive affect (\emph{r} =
+-.39). More importantly however, people who felt they needed more
+privacy were also less authentic on their SNSs profiles (\emph{r} =
+-.48) and less authentic in their personal relationships (\emph{r} =
+-.28; {\textbf{???}}). For example, people who agreed to items like
+\enquote{I do not talk about personal issues unless my conversation
+partner brings them up first} were more likely to report that their
+online profiles did not truly represent their personality. Given the
+argument that authenticity is a subset of integrity ({\textbf{???}}), we
+reason that the concept of integrity might relate to the desired level
+of privacy. Finally, Pedersen (1982) showed that three dimensions of
+need for privacy related to self-esteem: In his study with \emph{N} = 70
+undergraduate students, respondents who held a lower self-esteem were
+more reserved (\emph{r} = .29), needed more anonymity (\emph{r} = .21)
+and preferred solitude (\emph{r} = .24). Granted, self-esteem and
+integrity are generally distinct concepts; however, Pedersen's specific
+operationalization of self-esteem integrated several aspects of
+integrity (e.g., by using items such as \enquote{moral, nice, fair,
+unselfish, good, honest, reputable, sane} to measure self-esteem). Thus,
+our overarching hypothesis is that people who lack integrity have a
+greater desire for privacy.
+
+In Study 1, we used a questionnaire-based design to analyze how lack of
+integrity and other personality facets relate to desire for privacy. In
+accordance with the reasoning mentioned above, we suggest that people
+with less integrity feel a greater desire for privacy. Specifically, we
+argue that integrity may relate to the desire for privacy from (a)
+government surveillance, as governments have the legitimate power to
+prosecute illegal activities. Next, we hypothesize that integrity
+relates to the desire privacy for (b) anonymity. Anonymity makes it more
+difficult for both legal and social agents to identify and address
+potential wrongdoers, which is why people with less integrity will
+prefer situations in which they are anonymous. Finally, lack of
+integrity likely also relates to an increased desire for privacy from
+(c) other people, as most other people will disapprove of immoral or
+illegal activities, and might reveal those activities to authorities.
+
+Hypothesis 1: People who feel lower in self-perceived integrity desire
+more privacy from government surveillance (H1a), more anonymity (H1b),
+and more privacy from other persons (H1c).
+
+\hypertarget{shyness}{%
+\subsubsection{Shyness}\label{shyness}}
+
+Critics of the nothing-to-hide argument hold that people who desire
+privacy should not automatically be confronted with suspicion, and that
+privacy has several purposes that are not related to criminal behavior
+({\textbf{???}}). Westin (1967), for example, defined four primary
+purposes of privacy: (1) self-development (i.e., the integration of
+experiences into meaningful patterns), (2) autonomy (i.e., the desire to
+avoid being manipulated and dominated), (3) emotional release (i.e., the
+release of tension from social role demands), and (4) protected
+communication (i.e., the ability to foster intimate relationships).
+These are all important social factors for which people desire privacy.
+Hence, the argument is that people who desire privacy can have several
+legitimate reasons for doing so; reasons which are essential for
+psychosocial wellbeing and which relate to different factors of
+personality. Below, we thus explore other (neutral) aspects of
+personality that potentially predict desire for privacy. In order to be
+more precise, we follow the advice by Paunonen and Ashton (2001) and,
+instead of using generic personality factors as predictors, refer to
+specific personality facets.
+
+First, we argue that people who are more reserved, who feel less
+comfortable in social situations, generally desire more anonymity and
+more interpersonal privacy. Given that privacy is, by definition, a
+voluntary withdrawal from society (Westin, 1967), we expect that people
+who are more reserved or more shy desire more privacy from others.
+Several empirical studies support this hypothesis: Extroverted people
+desire less privacy ({\textbf{???}}), people who describe themselves as
+introverted thinkers are more likely to prefer social isolation
+(Pedersen, 1982), and introverted people are more likely to report
+invasions of privacy ({\textbf{???}}). Finally, we did not find
+convincing theoretical and empirical arguments for why shyness should
+relate to an increased desire for privacy from government surveillance,
+which is why we did not include a hypothesis on this relation.
+
+Hypothesis 2: People who are more shy desire more anonymity (H2a) and
+more privacy from other persons (H2b).
+
+\hypertarget{anxiety}{%
+\subsubsection{Anxiety}\label{anxiety}}
+
+Of course, there are also reasons why people might desire less privacy.
+Government agencies often curtail privacy with the aim to prevent crime:
+For example, the NSA's surveillance programs are often considered a
+direct response to the 9 / 11 terrorists attacks ({\textbf{???}}). It
+seems plausible that people who are more afraid of terrorist attacks are
+also more likely to consent to these surveillance programs, given that
+these programs promise to reduce the likelihood of future attacks. One
+can then argue that people who are afraid of terrorist attacks are also
+more afraid of threats overall, which is why we suggest that people who
+are, in general, more anxious desire less privacy from government
+surveillance and less anonymity. We did not include a hypothesis on the
+potential relation between anxiety and desire for interpersonal privacy.
+On the one hand, one could argue that people who are more anxious are
+more reserved, given that social interactions can pose significant risks
+(especially with strangers or weak ties; {\textbf{???}}). At the same
+time, one could suggest that especially those people who are more
+anxious desire less privacy from others (and especially their strong
+ties), in order to cope better with their daily challenges. At the end,
+given that we measure interpersonal privacy on a general level (and do
+not distinguish between desire for privacy from (a) weak ties and (b)
+strong ties), it seems plausible that both effects could cancel each
+other out.
+
+Hypothesis 3: People who are more anxious desire less privacy from
+government surveillance (H3a) and more anonymity (H3b).
+
+\hypertarget{risk-aversion}{%
+\subsubsection{Risk aversion}\label{risk-aversion}}
+
+Disclosing personal information always poses a certain risk, given that
+others can misuse self-disclosed personal information in different
+contexts, which can lead to severe consequences ({\textbf{???}}). Not
+everyone will feel intimidated by this hypothetical threat---except
+those who have a general tendency to avoid taking unnecessary risks. The
+most cautious strategy to minimize risks of personal self-disclosures
+would be, arguably, to keep as much information as possible private.
+Hence, we suggest that people who are, in general, more risk averse have
+a good reason to desire more privacy in all three aforementioned
+contexts.
+
+Hypothesis 4: People who are more risk averse desire more privacy from
+government surveillance (H4a), more anonymity (H4b), and more privacy
+from other persons (H4c).
+
+\hypertarget{traditionality}{%
+\subsubsection{Traditionality}\label{traditionality}}
+
+The personal computer and the Internet have rendered the world
+increasingly digitized: Social interactions, purchases, and medical
+treatments nowadays all produce digital traces, which can be combined
+into accurate latent user profiles. Given the features of digital
+information (i.e., information is persistent, searchable, reproducible,
+and scalable; {\textbf{???}}), this allows for unprecedented ways and
+degrees of surveillance. Mark Zuckerberg famously observed that privacy
+is no longer a \enquote{social norm,} rather that people share personal
+information ({\textbf{???}}). Hence, in order to be part of contemporary
+life (e.g., by using SNSs), it seems necessary to give up some privacy.
+However, arguably not everyone is willing to pay that price, and
+especially people who are more conservative might prefer to stick to
+their usual routines and decide against giving up their privacy. This is
+supported by empirical research: Older people, who are generally less
+open and more traditional ({\textbf{???}}), are more concerned about
+their privacy than younger people ({\textbf{???}}). Taken together, we
+suggest that people who are more traditional also desire more privacy in
+all three aforementioned contexts.
+
+Hypothesis 5: People who are more traditional desire more privacy from
+government surveillance (H5a), more anonymity (H5b), and more privacy
+from other persons (H5c).
+
+\hypertarget{methods}{%
+\section{Methods}\label{methods}}
+
+We report how we determined our sample size, all data exclusions (if
+any), all manipulations, and all measures in the study.
+
+\hypertarget{procedure-and-participants}{%
+\subsection{Procedure and
+participants}\label{procedure-and-participants}}
+
+Participants were students from a university in the western U.S. who
+received course credit for taking part in the study. The sample
+consisted of \emph{N} = 296 respondents, with an age that ranged from 18
+to 56 years (\emph{M} = 20 years). 72\% of the respondents were female.
+The median participation time was 24 minutes. Regarding ethnicity, 37\%
+of the respondents were Non-Hispanic White / Caucasian, 4\% Black /
+African American, 21\% Hispanic / Latino, 24\% Asian / Pacific Islander,
+0\% Native American, 5\% others, and 8\% nonresponse.
+
+\hypertarget{measures}{%
+\subsection{Measures}\label{measures}}
+
+Despite the fact that we mostly used well-established scales,
+confirmatory factor analyses (CFAs) showed that some of the original
+items had to be deleted in order to achieve adequate factorial validity.
+The final scales showed acceptable fit (CFI \textgreater .90, TLI
+\textgreater .90, RMSEA \textless .10, SRMR \textless .10), good
+composite reliability (REL(\(\upomega\)) \textgreater .60), and adequate
+convergent factorial validity (AVE \textgreater .50; see Table
+\ref{tab:DIS_Study_4_Table_1}). Respondents answered all items on a
+7-point Likert scale ranging from 1 (\emph{strongly disagree}) to 7
+(\emph{strongly agree}).
+
+The data, all items (including deleted ones), results of CFAs, item
+statistics, and distribution plots can be found in the online
+supplementary material.\footnote{\url{https://osf.io/7ncpk/?view_only=38283fd9262646378e4ba1e19c9d707f}\}\}}
+
+\hypertarget{desire-for-privacy-1}{%
+\subsubsection{Desire for privacy}\label{desire-for-privacy-1}}
+
+We measured desire for privacy on three dimensions: (a) Desire for
+privacy from government surveillance, which represents the extent to
+which people want the government to abstain from collecting information
+about their personal life. One example item is \enquote{I feel the need
+to protect my privacy from government agencies.} (b) Desire for
+anonymity, which measures the extent to which people feel the need to
+avoid identification(\enquote{I need to be able to use a fake name on
+social network sites to preserve my privacy\}). (c) Desire for privacy
+from other people, which measures the extent to which people want to
+withhold personal information from others(}I don't feel the need to tell
+my friends all my secrets\}). For each dimension, we used 3
+self-developed items that build on prior studies ({\textbf{???}}).
+
+\hypertarget{integrity}{%
+\subsubsection{Integrity}\label{integrity}}
+
+Integrity measures the extent to which people comply with social norms
+and values. When measuring integrity, the question arises whether it is
+possible to measure integrity based on self-reports. Interestingly,
+integrity tests that are based on self-reports have been shown to work
+successfully, given that they can predict unwanted professional
+workplace behavior sufficiently (e.g., theft, drug and alcohol problems,
+or absenteeism; {\textbf{???}}). In order to measure lack of integrity,
+we thus used 4 items of the subscale integrity of the Supernumerary
+Personality Inventory ({\textbf{???}}). An example item is \enquote{I
+don't think there's anything wrong with cheating a little on one's
+income tax forms.}
+
+\hypertarget{shyness-1}{%
+\subsubsection{Shyness}\label{shyness-1}}
+
+Shyness captures whether people prefer to spend their time alone or in
+company. We measured shyness with 4 items of the inverted extraversion
+subscale gregariousness ({\textbf{???}}). An example item is "I shy away
+from crowds of people.\}
+
+\hypertarget{anxiety-1}{%
+\subsubsection{Anxiety}\label{anxiety-1}}
+
+Anxiety measures whether people are afraid of negative external
+influences. We measured anxiety with 4 items of the neuroticism subscale
+anxiety ({\textbf{???}}). An example item is "I am easily frightened.\}
+
+\hypertarget{risk-avoidance}{%
+\subsubsection{Risk avoidance}\label{risk-avoidance}}
+
+Risk avoidance captures whether people abstain from taking risks. We
+measured risk avoidance with 4 items of the conscientiousness subscale
+deliberation ({\textbf{???}}). An example item is "I think twice before
+I answer a question.\}
+
+\hypertarget{traditionalism}{%
+\subsubsection{Traditionalism}\label{traditionalism}}
+
+Traditionalism measures whether people prefer to stick with their usual
+routines. We measured traditionalism with 4 items of the inverted
+openness to experiences subscale actions ({\textbf{???}}). An example
+item is "I'm pretty set in my ways.\}
+
+\hypertarget{data-analyses}{%
+\subsection{Data analyses}\label{data-analyses}}
+
+All hypotheses were tested with structural equation modeling (SEM). To
+assess the SEM assumption of multivariate normality, we computed a
+multivariate Shapiro-Wilk normality test. The results showed a violation
+of multivariate normality (\emph{W} = 0.90, \emph{p} \textless .001),
+which is why we used the more robust Satorra-Bentler scaled test
+statistic as estimator. We treated missing data with casewise deletion
+and tested all hypotheses with a two-tailed p \textless .050
+significance level; values between \emph{p} = .050 and \emph{p} = .010
+were considered trends toward significance. Regarding effect sizes, we
+classified regression coefficients with values exceeding \(\upbeta\) =
+.10 as small effects, \(\upbeta\) = .30 as medium effects, and
+\(\upbeta\) = .50 as large effects.
+
+Unfortunately, we did not determine sample size based on a priori power
+analyses. We decided against including social desirability as a control
+variable, because even though social desirability can affect answers to
+sensitive questions ({\textbf{???}}), it is more likely to reflect a
+true personality trait than false answering behavior ({\textbf{???}}).
+Likewise, we did not include demographic control variables such as age
+or education, because we used a typical student sample with little
+demographic variance. We used R (Version 3.5.1; R Core Team, 2018) for
+all our analyses.
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+The results of Study 1 showed that integrity relates to several
+dimensions of desire for privacy: People who reported being of lower
+integrity desired more privacy from government and more anonymity. In
+other words, people who agreed that there would be nothing wrong with
+cheating a little or lying occasionally were also more likely to agree
+that the government should not invade peoples' privacy, even if that
+could help to prevent terrorist attacks. Likewise, people who said, for
+example, that they would feel tempted to take things that do not belong
+to them were also more likely to avoid situations in which they were
+identifiable.
+
+In addition, desire for privacy was predicted also by other (neutral)
+personality facets: People who were more shy, more risk averse, and less
+anxious also desired more privacy. This implies that next to lack of
+integrity there are various other personality-related aspects that
+predict desire for privacy.
+
+People who are more shy, more risk averse, or less anxious also desire
+more privacy. For example, people who are less anxious are less likely
+to accept government surveillance (arguably because they are less afraid
+of terrorist attacks). When looking at the bigger implications of the
+results, this shows the importance to make differentiated claims on why
+people desire privacy: Indeed, the results suggest that some people
+desire privacy because they might have something to hide. However,
+putting everyone who desires privacy under a general suspicion is wrong
+given that shy, risk averse, and less anxious people are also more
+likely to desire privacy.
+
+In conclusion, our results follow ({\textbf{???}}), who reasoned that if
+exposure of information is risky it is likely that people will use more
+mechanisms to strengthen their social boundaries and increase their
+desired level of privacy. This study thus aligns with Altman's privacy
+regulation theory by showing that, in several contexts, people with
+lower integrity had a higher level of desired privacy.
+
+\hypertarget{limitations-and-future-perspective}{%
+\subsection{Limitations and future
+perspective}\label{limitations-and-future-perspective}}
+
+In our analysis of predictors of privacy, we followed the recommendation
+by Paunonen and Ashton (2001) and did not analyze broad factors of
+personality (e.g., neuroticism); instead, we focused on more specific
+personality facets (e.g., fearfulness). For future research, we suggest
+going one step further by analyzing predictors that are even more
+specified. For example, it seems possible that people who hold
+dissenting political beliefs could also have a higher desire for privacy
+from the government. Similarly, it would be interesting to focus on
+different minority groups. For example, it seems plausible that people
+from a LGBT background might desire more privacy from government
+(because it is potentially repressive or unfriendly toward LGBTs).
+Finally, in this study we focused mostly on escapist motives for why
+people desire privacy (e.g., shyness, risk aversion). Interestingly,
+({\textbf{???}}) were able to show that when predicting engagement in
+solitary activities, it is less preferable to measure how strongly
+people want to escape society (avoidance oriented), but rather how much
+they seek solitude (approach oriented). Hence, future studies might want
+to include predictors that are more approach oriented (e.g., peoples'
+desire for contemplation).
+
+From a methodological perspective, future research should continue to
+improve the instruments we used, given that factorial validity of some
+scales was only moderate. Similarly, we recommend elaborating on the
+general understanding of integrity as a theoretical concept. To date,
+there is not one overarching concept of integrity that incorporates all
+the different aspects of integrity, yet it would be valuable to examine
+how other aspects of integrity (e.g., authenticity, trustworthiness, or
+consistency) relate to privacy desires.
+
+Power analyses showed that future research should use samples above
+\emph{N} \(\approx\) 260 in order to test hypotheses with the
+recommended power of at least .80 (Cohen, 1992).
+
+In general, the question arises whether it is possible, or even socially
+desirable, to measure a person's integrity. On the one hand, integrity
+implies absolute criteria: Stealing is bad and forbidden, whereas
+helping is good and encouraged. On the other hand, integrity implies
+relative criteria: Whereas some cultures disapprove of lying whatever
+the context, others consider lying okay---for example \enquote{white
+lies} in order to save face or to avoid hurting someone's feelings
+({\textbf{???}}). Thus, ranking behaviors, opinions, and character
+traits with regard to integrity is a moral dilemma. As a result,
+throughout the entire study we have understood integrity as a
+transgression of social norms that is strong and that most societies
+would agree upon (for example, most societies would consider stealing as
+a sign of low integrity).
+
+As a final note, we measured integrity based on self-ratings. One can
+criticize this approach by saying it is not possible to measure
+integrity based on self-reports because of social desirability
+influences. However, self-reports of integrity can indeed predict
+malevolent behavior: In a meta-analysis with 665 correlation
+coefficients, integrity tests related to counterproductive behaviors
+with a coefficient of \emph{r} = .47 ({\textbf{???}}). Nonetheless,
+future research would benefit from including behavioral manifestations
+of integrity, such as concrete cheating behaviors. If concrete cheating
+behaviors also increase desires for privacy, this would strengthen the
+underlying premise of the nothing-to-hide argument.
+
+\hypertarget{conclusion}{%
+\subsection{Conclusion}\label{conclusion}}
+
+\newpage
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-Dienlin.2014}{}%
+Dienlin, T. (2014). The privacy process model. In S. Garnett, S. Halft,
+M. Herz, \& J. M. Mönig (Eds.), \emph{Medien und Privatheit} (pp.
+105--122). Passau, Germany: Karl Stutz.
+
+\leavevmode\hypertarget{ref-Paunonen.2001}{}%
+Paunonen, S. V., \& Ashton, M. C. (2001). Big Five factors and facets
+and the prediction of behavior. \emph{Journal of Personality and Social
+Psychology}, \emph{81}(3), 524--539.
+doi:\href{https://doi.org/10.1037/0022-3514.81.3.524}{10.1037/0022-3514.81.3.524}
+
+\leavevmode\hypertarget{ref-Pedersen.1979}{}%
+Pedersen, D. M. (1979). Dimensions of privacy. \emph{Perceptual and
+Motor Skills}, \emph{48}(3), 1291--1297.
+doi:\href{https://doi.org/10.2466/pms.1979.48.3c.1291}{10.2466/pms.1979.48.3c.1291}
+
+\leavevmode\hypertarget{ref-Pedersen.1982}{}%
+Pedersen, D. M. (1982). Personality correlates of privacy. \emph{The
+Journal of Psychology}, \emph{112}(1), 11--14.
+doi:\href{https://doi.org/10.1080/00223980.1982.9923528}{10.1080/00223980.1982.9923528}
+
+\leavevmode\hypertarget{ref-R-base}{}%
+R Core Team. (2018). \emph{R: A language and environment for statistical
+computing}. Vienna, Austria: R Foundation for Statistical Computing.
+Retrieved from \url{https://www.R-project.org/}
+
+\leavevmode\hypertarget{ref-Schwartz.1968}{}%
+Schwartz, B. (1968). The social psychology of privacy. \emph{American
+Journal of Sociology}, \emph{73}(6), 741--752.
+
+\leavevmode\hypertarget{ref-Westin.1967}{}%
+Westin, A. F. (1967). \emph{Privacy and freedom}. New York, NY:
+Atheneum.
+
+\endgroup
+
+
+\end{document}

@@ -572,15 +572,14 @@ fit <- sem(model, d, missing = "ml")
 summary(fit, fit = TRUE, std = TRUE)
 ```
 
-
 # Visualization
 
 ```{r}
 d_effects <- coeffs_tab(main_fit) %>%
   mutate(sig = ifelse(p < .05, "1", "0"))
 
-std_ci <- ci.src(beta.k = d_effects$beta, b.k = d_effects$b, 
-                 N = 400, conf.level = .95, SE.b.k = .10, s.Y = sqrt(.955), )
+# std_ci <- ci.src(beta.k = d_effects$beta, b.k = d_effects$b, 
+#                  N = 400, conf.level = .95, SE.b.k = .10, s.Y = sqrt(.955), )
   
 p_effects <- ggplot(d_effects, aes(x = beta)) +
   geom_point(aes(y = Predictor, color = sig)) +
