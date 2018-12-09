@@ -1,0 +1,672 @@
+---
+title: "Who Needs Privacy?"
+subtitle: "Analyses"
+output:
+  pdf_document: default
+---
+
+```{r knitr-setup, include=F}
+knitr::opts_chunk$set(warning=F, echo=F)
+options(digits = 3)
+```
+
+```{r r-setup, include=F, echo=F}
+# list packages to be used
+packages <- c("devtools", "ggplot2", "influence.SEM", "lavaan", "MBESS", 
+              "magrittr", "PerFit", "psych", "semPlot", "tidyverse")
+
+# install packages
+install <- FALSE  # change to TRUE to install packages
+if(isTRUE(install)) (
+  lapply(packages, install.packages, repos = 'http://cran.us.r-project.org')
+)
+# devtools::install_git("https://github.com/tdienlin/td")
+
+# load packages
+lapply(packages, library, character.only = TRUE)
+library(td)
+```
+
+```{r data-wrangling, include=F, echo=F}
+# read data
+# note: a bit complicated, as second row contains variable attributes
+d <- read_csv("../data/data.csv", skip = 2, col_names = FALSE) %>% 
+  set_names(colnames(read_csv("../data/data.csv", n_max = 1)))
+
+# prepare table with item content
+items <- data.frame(
+  name = colnames(read_csv("../data/data.csv", n_max = 1)),  # extract item names
+  content = colnames(read_csv("../data/data.csv", skip = 1, n_max = 2))  # extract item content
+) %>% 
+  mutate(content = gsub("To what extent do you agree or disagree with the following / statements[?][-]", "", content)) %>% 
+  mutate(content = gsub("To what extent do you agree or disagree with the / following statements[?][-]", "", content)) %>% 
+  mutate(content_breaks = sapply(content, string_break, 30))
+
+# filter pretest data
+d <- d[-(1:11), ]
+
+# edit variables
+d %<>% 
+  mutate(
+    male = 2 - SES.SEX,
+    time = V9 - V8,
+    id = 1:nrow(.)
+    ) %>% 
+  mutate_at(vars(RIT_1:RIT_8), funs(as.numeric(.))) %>% 
+  rename(
+    age = SES.AGE,
+    inc = SES.JOB_2
+  )
+
+# select items
+d %<>% dplyr::select(
+  id, male, age, inc, time,
+  starts_with("N4P"),
+  starts_with("INT_"),
+  SOC_1 : SOC_8,
+  starts_with("FEA_"),
+  TRA_1 : TRA_8,
+  RIT_1 : RIT_8,
+  BFI_1 : BFI_10
+)
+items <- names(d)
+```
+
+# Data wrangling
+## Delete defective data
+
+First, we checked response times to delete inconceivably fast respondents. 
+
+```{r}
+# plot reponse times
+qplot(d$time)
+
+# filter speeders (i.e., t < 180s)
+d_all <- d
+d <- d[d$time > 120, ]
+
+# filter defective data
+lzpoly <- lzpoly(dplyr::select(d, N4P.BOT_1:RIT_8) - 1, 7)
+gpoly <- Gnormed.poly(dplyr::select(d, N4P.BOT_1:RIT_8) - 1, 7) %$% 
+  PFscores %>% 
+  mutate(id = d$id) %>% 
+  arrange(PFscores)
+
+# inspect cases with susceptive data
+d[PFscores > .30, ]
+```
+
+
+# Measures
+## Need for Privacy
+
+```{r, fig.height=15, fig.width=12}
+d_tmp <- dplyr::select(d, starts_with("N4P"))
+name_tmp <- "pri_nee"
+recoded_tmp <- c("N4P.INT_1", "N4P.INT_5", "N4P.INT_8")
+
+ggplot(d_tmp %>% 
+         gather(name, value) %>% 
+         left_join(items, "name"),
+         aes(x = value)) +
+  geom_bar() +
+  facet_wrap(~content_breaks)
+
+# recode
+d[recoded_tmp] <- 8 - d[recoded_tmp]
+d_tmp <- dplyr::select(d, starts_with("N4P"))  # new selection bc of recoding
+```
+
+### Parallel analysis
+
+```{r}
+fa.parallel(d_tmp)
+```
+
+Solution suggests 4 or 3 factors
+
+### EFA 4 factors
+
+```{r}
+tmp <- omega(d_tmp, nfactors = 4, fm = "ml")
+```
+
+Shows several items with negative or low loadings, which will be excluded in updated version.
+
+\newpage
+
+```{r}
+tmp <- omega(dplyr::select(d_tmp, 
+                    -N4P.BOT_4, -N4P.BOT_3, -N4P.SOC_7, -N4P.INT_5, -N4P.INT_3), 
+             nfactors = 4, fm = "ml")
+```
+
+Produces a fitting solution.
+
+\newpage
+
+```{r}
+tmp$schmid$sl
+```
+
+Using four factors, looking at the items's content we do not find an easily interpretable solution.
+
+\newpage
+### EFA 3 factors
+
+```{r}
+tmp <- omega(d_tmp, nfactors = 3, fm = "ml")
+```
+
+Shows several items with negative or low loadings, which will be excluded in updated version.
+
+
+\newpage
+
+```{r}
+tmp <- omega(dplyr::select(d_tmp,
+                    -N4P.BOT_4, -N4P.BOT_3, -N4P.INT_5, -N4P.INT_3, -N4P.INT_7, -N4P.INT_4), 
+             nfactors = 3, fm = "ml")
+```
+
+Produces a fitting solution.
+
+\newpage
+
+```{r}
+tmp$schmid$sl
+```
+
+Interpretation
+
+* factor 1 measures privacy from the government (vertical)
+* factor 2 measures privacy from identification (combined)
+* factor 3 measures privacy from other people (horizontal)
+
+### CFA
+
+```{r}
+model <- '
+  pri_nee_ver =~ N4P.SOC_4 + N4P.SOC_1 + N4P.SOC_3 + N4P.SOC_9 + N4P.SOC_2 + N4P.SOC_5
+  pri_nee_ide =~ N4P.INT_1 + N4P.SOC_7 + N4P.SOC_8 + N4P.INT_8 + N4P.SOC_6 + N4P.INT_2 + N4P.INT_6 
+  pri_nee_hor =~ N4P.BOT_1 + N4P.BOT_2 + N4P.INT_6 + N4P.INT_9 + N4P.INT_2
+  pri_nee_gen =~ N4P.SOC_4 + N4P.SOC_1 + N4P.SOC_3 + N4P.SOC_9 + N4P.SOC_2 + N4P.SOC_5 + N4P.INT_1 + N4P.SOC_7 + N4P.SOC_8 + N4P.INT_8 + N4P.SOC_6 + N4P.INT_2 + N4P.INT_6 + N4P.BOT_1 + N4P.BOT_2 + N4P.INT_6 + N4P.INT_9 + N4P.INT_2
+  pri_nee_gen ~~ 0*pri_nee_ver + 0*pri_nee_hor + 0*pri_nee_ide
+  pri_nee_ver ~~ 0*pri_nee_hor + 0*pri_nee_ide
+  pri_nee_hor ~~ 0*pri_nee_ide
+'
+fit <- cfa(model, d, missing = "ml")
+summary(fit, fit = TRUE, std = TRUE)
+assign(paste0(name_tmp, "_fit"), cfa(model, d))
+semPaths(fit, bifactor = "pri_nee_gen", layout = "tree3")
+```
+
+\newpage
+## Integrity
+
+```{r, fig.height=8, fig.width=12}
+d_tmp <- dplyr::select(d, starts_with("INT_"))
+name_tmp <- "int"
+recoded_tmp <- c("INT_1", "INT_2", "INT_5", "INT_6", "INT_7", 
+                 "INT_8", "INT_9", "INT_10", "INT_11")
+
+ggplot(d_tmp %>% 
+         gather(name, value) %>% 
+         left_join(items, "name"),
+         aes(x = value)) +
+  geom_bar() +
+  facet_wrap(~content_breaks)
+
+d[recoded_tmp] <- 8 - d[recoded_tmp]  # recode
+d_tmp <- dplyr::select(d, starts_with("INT_"))  # new selection bc of recoding
+```
+
+### Parallel analysis
+
+```{r}
+fa.parallel(d_tmp)
+```
+
+### EFA
+
+```{r}
+tmp <- omega(d_tmp, fm = "ml", nfactors = 3)
+```
+
+Shows no clear solution for three factors.
+
+\newpage
+
+```{r}
+tmp <- omega(d_tmp, fm = "ml", nfactors = 2)
+```
+
+Shows solution for two factors. Delete items INT_4 and INT_3 for not loading on general factor
+
+\newpage
+
+```{r}
+tmp <- omega(dplyr::select(d_tmp, -INT_3, -INT_4), fm = "ml", nfactors = 2)
+```
+
+\newpage
+
+```{r}
+tmp$schmid$sl
+```
+
+Interpretation
+
+* factor 1 measures ...
+* factor 2 measures ...
+
+### CFA
+
+```{r}
+model <- '
+  int_1 =~ INT_1 + INT_2 + a*INT_5 + a*INT_6 + a*INT_7 + INT_8
+  int_2 =~ b*INT_8 + b*INT_9 + b*INT_10 + b*INT_11
+  int_gen =~ INT_1 + INT_2 + INT_5 + INT_6 + INT_7 + INT_8 + INT_9 + INT_10 + INT_11
+  int_gen ~~ 0*int_1 + 0*int_2
+  int_1 ~~ 0*int_2
+'
+fit <- cfa(model, d, missing = "ml")
+summary(fit, fit = TRUE, std = TRUE)
+assign(paste0(name_tmp, "_fit"), 
+       cfa(model, d))
+assign(paste0(name_tmp, "_gen"), 
+       dplyr::select(as.data.frame(predict(fit)), ends_with("_gen")))
+```
+
+## Sociability
+
+```{r, fig.height=8, fig.width=12}
+d_tmp <- dplyr::select(d, SOC_1 : SOC_8)
+name_tmp <- "soc"
+recoded_tmp <- c("SOC_1", "SOC_3", "SOC_5", "SOC_7")
+
+p_int <- ggplot(d_tmp %>% 
+                  gather(name, value) %>% 
+                  left_join(items, "name"),
+                  aes(x = value)) +
+  geom_bar() +
+  facet_wrap(~content_breaks)
+p_int
+
+# recode
+d[recoded_tmp] <- 8 - d[recoded_tmp]
+d_tmp <- dplyr::select(d, SOC_1 : SOC_8)  # new selection bc of recoding
+```
+
+### Parallel analysis
+
+```{r}
+fa.parallel(d_tmp)
+```
+
+\newpage
+
+### EFA
+
+```{r}
+tmp <- omega(d_tmp, fm = "ml", nfactors = 3)
+```
+
+Shows no clear solution for three factors.
+
+\newpage
+
+```{r}
+tmp <- omega(d_tmp, fm = "ml", nfactors = 2)
+```
+
+Shows solution for two factors. Differentiates between inverted and regular items. 
+
+\newpage
+
+```{r}
+tmp$schmid$sl
+```
+
+Interpretation
+
+* factor 1 measures ...
+* factor 2 measures ...
+
+### CFA
+
+```{r}
+model <- '
+  soc_1 =~ a*SOC_1 + SOC_3 + SOC_5 + a*SOC_7
+  soc_2 =~ b*SOC_2 + SOC_4 + SOC_6 + b*SOC_8 + SOC_1 + SOC_7
+  soc_gen =~ SOC_1 + SOC_2 + SOC_3 + SOC_4 + SOC_5 + SOC_6 + SOC_7 + SOC_8
+  soc_gen ~~ 0*soc_1 + 0*soc_2
+  soc_1 ~~ 0*soc_2
+'
+fit <- cfa(model, d, missing = "ml")
+summary(fit, fit = TRUE, std = TRUE)
+assign(paste0(name_tmp, "_fit"), 
+       cfa(model, d))
+assign(paste0(name_tmp, "_gen"), 
+       dplyr::select(as.data.frame(predict(fit)), ends_with("_gen")))
+```
+
+## Fearfulness
+
+```{r}
+d_tmp <- dplyr::select(d, starts_with("FEA_"))
+name_tmp <- "fea"
+recoded_tmp <- c("FEA_1", "FEA_3", "FEA_5", "FEA_7")
+
+ggplot(d_tmp %>% 
+         gather(name, value) %>% 
+         left_join(items, "name"),
+         aes(x = value)) +
+  geom_bar() +
+  facet_wrap(~content_breaks)
+
+# recode
+d[recoded_tmp] <- 8 - d[recoded_tmp]
+d_tmp <- dplyr::select(d, starts_with("FEA_"))  # new selection bc of recoding
+```
+
+### Parallel analysis
+
+```{r}
+fa.parallel(d_tmp)
+```
+
+### EFA 4 factors
+
+```{r}
+tmp <- omega(d_tmp, nfactors = 2, fm = "ml")
+```
+
+Produces a fitting solution.
+
+\newpage
+
+```{r}
+tmp$schmid$sl
+```
+
+\newpage
+### CFA
+
+```{r}
+model <- '
+  fea_1 =~ a*FEA_2 + a*FEA_4 + a*FEA_6 + FEA_8
+  fea_2 =~ FEA_1 + b*FEA_3 + b*FEA_5 + b*FEA_7
+  fea_gen =~ FEA_2 + FEA_4 + FEA_7 + FEA_8 + FEA_1 + FEA_3 + FEA_5 + FEA_6
+  
+  fea_gen ~~ 0*fea_1 + 0*fea_2
+  fea_1 ~~ 0*fea_2
+'
+fit <- cfa(model, d, missing = "ml")
+summary(fit, fit = TRUE, std = TRUE)
+assign(paste0(name_tmp, "_fit"), cfa(model, d))
+assign(paste0(name_tmp, "_gen"), 
+       dplyr::select(as.data.frame(predict(fit)), ends_with("_gen")))
+```
+
+\newpage
+
+## Traditionalism
+
+```{r}
+d_tmp <- dplyr::select(d, TRA_1 : TRA_8)
+name_tmp <- "tra"
+recoded_tmp <- c("TRA_2", "TRA_4", "TRA_6")
+
+ggplot(d_tmp %>% 
+         gather(name, value) %>% 
+         left_join(items, "name"),
+         aes(x = value)) +
+  geom_bar() +
+  facet_wrap(~content_breaks)
+
+# recode
+d[recoded_tmp] <- 8 - d[recoded_tmp]
+d_tmp <- dplyr::select(d, TRA_1 : TRA_8)  # new selection bc of recoding
+```
+
+### Parallel analysis
+
+```{r}
+fa.parallel(d_tmp)
+```
+
+### EFA 4 factors
+
+```{r}
+tmp <- omega(d_tmp, nfactors = 2, fm = "ml")
+```
+
+Produces a fitting solution.
+
+\newpage
+
+```{r}
+tmp$schmid$sl
+```
+
+\newpage
+### CFA
+
+```{r}
+model <- '
+  tra_1 =~ a*TRA_1 + a*TRA_3 + a*TRA_5 + a*TRA_7 + a*TRA_8
+  tra_2 =~ TRA_2 + TRA_4 + TRA_6 
+  tra_gen =~ TRA_1 + TRA_2 + TRA_3 + TRA_4 + TRA_5 + TRA_6 + TRA_7 + TRA_8
+  
+  tra_gen ~~ 0*tra_1 + 0*tra_2
+  tra_1 ~~ 0*tra_2
+'
+fit <- cfa(model, d, missing = "ml")
+summary(fit, fit = TRUE, std = TRUE)
+assign(paste0(name_tmp, "_fit"), cfa(model, d))
+assign(paste0(name_tmp, "_gen"), 
+       dplyr::select(as.data.frame(predict(fit)), ends_with("_gen")))
+```
+
+\newpage
+
+## Risk Avoidance
+
+```{r}
+d_tmp <- dplyr::select(d, RIT_1 : RIT_8)
+name_tmp <- "rit"
+recoded_tmp <- c("RIT_1", "RIT_3", "RIT_5")
+  
+ggplot(d_tmp %>% 
+         gather(name, value) %>% 
+         left_join(items, "name"),
+         aes(x = value)) +
+  geom_bar() +
+  facet_wrap(~content_breaks)
+
+# recode
+d[recoded_tmp] <- 8 - d[recoded_tmp]
+d_tmp <- dplyr::select(d, RIT_1 : RIT_8)  # new selection bc of recoding
+```
+
+### Parallel analysis
+
+```{r}
+fa.parallel(d_tmp)
+```
+
+### EFA 4 factors
+
+```{r}
+tmp <- omega(d_tmp, nfactors = 2, fm = "ml")
+```
+
+Produces a fitting solution.
+
+\newpage
+
+```{r}
+tmp$schmid$sl
+```
+
+\newpage
+### CFA
+
+```{r}
+model <- '
+  rit_1 =~ a*RIT_2 + a*RIT_4 + a*RIT_5 + a*RIT_7 + a*RIT_8
+  rit_2 =~ RIT_1 + RIT_3 + RIT_5
+  rit_gen =~ RIT_1 + RIT_2 + RIT_3 + RIT_4 + RIT_5 + RIT_6 + RIT_7 + RIT_8
+  
+  rit_gen ~~ 0*rit_1 + 0*rit_2
+  rit_1 ~~ 0*rit_2
+'
+fit <- cfa(model, d, missing = "ml")
+summary(fit, fit = TRUE, std = TRUE)
+assign(paste0(name_tmp, "_fit"), cfa(model, d))
+assign(paste0(name_tmp, "_gen"), 
+       dplyr::select(as.data.frame(predict(fit)), ends_with("_gen")))
+```
+
+## Big five
+
+```{r}
+d_tmp <- dplyr::select(d, BFI_1 : BFI_10)
+name_tmp <- "BFI"
+
+ggplot(d_tmp %>% 
+         gather(name, value) %>% 
+         left_join(items, "name"),
+         aes(x = value)) +
+  geom_bar() +
+  facet_wrap(~content_breaks)
+```
+
+### Correlations
+
+```{r}
+cor(d_tmp, use = "pairwise.complete.obs")
+```
+
+The dimensions show low correlations; as a result, we will use only 1 item (the one which is not inverted), to measure each dimension. This includes the following items: 
+
+* BFI_2, BFI_3, BFI_5, BFI_8, BFI_9
+
+# Results
+
+```{r}
+d <- cbind(d, int_gen, soc_gen, fea_gen, tra_gen, rit_gen)
+```
+
+```{r}
+name_tmp <- "main"
+model <- '
+  pri_nee_ver =~ N4P.SOC_4 + N4P.SOC_1 + N4P.SOC_3 + N4P.SOC_9 + N4P.SOC_2 + N4P.SOC_5
+  pri_nee_ide =~ N4P.INT_1 + N4P.SOC_7 + N4P.SOC_8 + N4P.INT_8 + N4P.SOC_6 + N4P.INT_2 + N4P.INT_6 
+  pri_nee_hor =~ N4P.BOT_1 + N4P.BOT_2 + N4P.INT_6 + N4P.INT_9 + N4P.INT_2
+  pri_nee_gen =~ N4P.SOC_4 + N4P.SOC_1 + N4P.SOC_3 + N4P.SOC_9 + N4P.SOC_2 + N4P.SOC_5 + N4P.INT_1 + N4P.SOC_7 + N4P.SOC_8 + N4P.INT_8 + N4P.SOC_6 + N4P.INT_2 + N4P.INT_6 + N4P.BOT_1 + N4P.BOT_2 + N4P.INT_6 + N4P.INT_9 + N4P.INT_2
+  
+  pri_nee_gen ~ int_gen + soc_gen + fea_gen + tra_gen + rit_gen + male + age + inc
+  pri_nee_ver ~ int_gen + soc_gen + fea_gen + tra_gen + rit_gen + male + age + inc
+  pri_nee_ide ~ int_gen + soc_gen + fea_gen + tra_gen + rit_gen + male + age + inc
+  pri_nee_hor ~ int_gen + soc_gen + fea_gen + tra_gen + rit_gen + male + age + inc
+
+  int_gen ~~ soc_gen + fea_gen + tra_gen + rit_gen
+  soc_gen ~~ fea_gen + tra_gen + rit_gen
+  fea_gen ~~ tra_gen + rit_gen
+  tra_gen ~~ rit_gen
+
+  pri_nee_gen ~~ 0*pri_nee_ver + 0*pri_nee_hor + 0*pri_nee_ide
+  pri_nee_ver ~~ 0*pri_nee_hor + 0*pri_nee_ide
+  pri_nee_hor ~~ 0*pri_nee_ide
+'
+fit <- sem(model, d, estimator = "MLR")
+summary(fit, fit = TRUE, std = TRUE)
+fit_rem_outlier <- sem(model, filter(d, cooks_dist < 3), estimator = "MLR")
+summary(fit_rem_outlier, fit = TRUE, std = TRUE)
+assign(paste0(name_tmp, "_fit"), cfa(model, d))
+d$cooks_dist <- cooks_dist
+genCookDist(model, d, estimator = "MLR")
+```
+
+# Visualization
+
+```{r}
+# calculate CI for standardized effect 
+# option 1: proper option, calculates extract bootstrapped coefficients for standardized solution
+# CURRENTLY DOESN'T WORK
+# d_effects <- bootstrapLavaan(main_fit)
+
+# option 2: use SEs of standardized solution
+d_effects <- standardizedsolution(main_fit) %>% 
+  as.data.frame() %>% 
+  filter(op == "~") %>% 
+  mutate(lhs = factor(lhs, c("pri_nee_gen", "pri_nee_ver", "pri_nee_hor", "pri_nee_ide"))) %>%  # reorder for plot
+  mutate(rhs = factor(rhs, c("inc", "age", "male", "rit_gen", "tra_gen", "fea_gen", "soc_gen", "int_gen"))) %>%  # reorder for plot
+  mutate(lhs = recode(lhs, 
+         `pri_nee_gen` = "Privacy need\ngeneral", 
+         `pri_nee_ver` = "Privacy need\ngovernment",
+         `pri_nee_hor` = "Privacy need\ninterpersonal",
+         `pri_nee_ide` = "Privacy need\nanonymity")) %>% 
+  mutate(rhs = recode(rhs,
+         `int_gen` = "Integrity",
+         `soc_gen` = "Sociability",
+         `fea_gen` = "Anxiety",
+         `tra_gen` = "Traditionalism",
+         `rit_gen` = "Risk avoidance",
+         `inc` = "Income",
+         `age` = "Age",
+         `male` = "Male")) %>% 
+  rename(beta = est.std)
+
+# prior solution
+# d_effects <- coeffs_tab(main_fit) %>%
+#   mutate(sig = ifelse(p < .05, "1", "0"))
+
+(p_effects <- ggplot(d_effects, aes(x = beta, y = rhs)) +
+  geom_point() +
+  geom_errorbarh(aes(xmin = ci.lower, xmax = ci.upper, height = .2)) + 
+#  scale_color_manual(values = c("#000000", "#FF0000")) +
+  geom_vline(xintercept = 0) +
+  geom_vline(xintercept = 0.1, linetype = "dashed", color = "grey") +
+  geom_vline(xintercept = -0.1, linetype = "dashed", color = "grey") +
+  theme_bw() + 
+  theme(axis.title = element_blank()) +
+  scale_x_continuous(breaks = seq(-.7, .7, .2)) +
+  facet_grid(~ lhs))
+```
+
+# Additional Analyses
+## With big five
+
+```{r}
+name_tmp <- "main_bigfive"
+model <- '
+  pri_nee_ver =~ N4P.SOC_4 + N4P.SOC_1 + N4P.SOC_3 + N4P.SOC_9 + N4P.SOC_2 + N4P.SOC_5
+  pri_nee_ide =~ N4P.INT_1 + N4P.SOC_7 + N4P.SOC_8 + N4P.INT_8 + N4P.SOC_6 + N4P.INT_2 + N4P.INT_6 
+  pri_nee_hor =~ N4P.BOT_1 + N4P.BOT_2 + N4P.INT_6 + N4P.INT_9 + N4P.INT_2
+  pri_nee_gen =~ N4P.SOC_4 + N4P.SOC_1 + N4P.SOC_3 + N4P.SOC_9 + N4P.SOC_2 + N4P.SOC_5 + N4P.INT_1 + N4P.SOC_7 + N4P.SOC_8 + N4P.INT_8 + N4P.SOC_6 + N4P.INT_2 + N4P.INT_6 + N4P.BOT_1 + N4P.BOT_2 + N4P.INT_6 + N4P.INT_9 + N4P.INT_2
+
+  pri_nee_gen ~ int_gen + soc_gen + fea_gen + tra_gen + rit_gen + BFI_2 + BFI_3 + BFI_5 + BFI_8 + BFI_9
+  pri_nee_ver ~ int_gen + soc_gen + fea_gen + tra_gen + rit_gen + BFI_2 + BFI_3 + BFI_5 + BFI_8 + BFI_9
+  pri_nee_ide ~ int_gen + soc_gen + fea_gen + tra_gen + rit_gen + BFI_2 + BFI_3 + BFI_5 + BFI_8 + BFI_9
+  pri_nee_hor ~ int_gen + soc_gen + fea_gen + tra_gen + rit_gen + BFI_2 + BFI_3 + BFI_5 + BFI_8 + BFI_9
+
+  int_gen ~~ soc_gen + fea_gen + tra_gen + rit_gen + BFI_2 + BFI_3 + BFI_5 + BFI_8 + BFI_9
+  soc_gen ~~ fea_gen + tra_gen + rit_gen + BFI_2 + BFI_3 + BFI_5 + BFI_8 + BFI_9
+  fea_gen ~~ tra_gen + rit_gen + BFI_2 + BFI_3 + BFI_5 + BFI_8 + BFI_9
+  tra_gen ~~ rit_gen + BFI_2 + BFI_3 + BFI_5 + BFI_8 + BFI_9
+  rit_gen ~~ BFI_2 + BFI_3 + BFI_5 + BFI_8 + BFI_9
+  BFI_2 ~~ BFI_3 + BFI_5 + BFI_8 + BFI_9
+  BFI_3 ~~ BFI_5 + BFI_8 + BFI_9
+  BFI_5 ~~ BFI_8 + BFI_9
+  BFI_8 ~~ BFI_9
+
+  pri_nee_gen ~~ 0*pri_nee_ver + 0*pri_nee_hor + 0*pri_nee_ide
+  pri_nee_ver ~~ 0*pri_nee_hor + 0*pri_nee_ide
+  pri_nee_hor ~~ 0*pri_nee_ide
+'
+fit <- sem(model, d, missing = "ml")
+summary(fit, fit = TRUE, std = TRUE)
+```
