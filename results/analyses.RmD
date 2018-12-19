@@ -52,12 +52,13 @@ d <- d[-(1:11), ]
 
 # edit variables
 d %<>% 
+  mutate_at(vars(RIT_1:RIT_8), funs(as.numeric(.))) %>% 
+  mutate_at(vars(V8, V9), funs(parse_datetime(., c("%d.%m.%Y %H:%M")))) %>% 
   mutate(
     male = 2 - SES.SEX,
     time = V9 - V8,
     id = 1:nrow(.)
     ) %>% 
-  mutate_at(vars(RIT_1:RIT_8), funs(as.numeric(.))) %>% 
   rename(
     age = SES.AGE,
     inc = SES.JOB_2
