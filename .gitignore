@@ -3,4 +3,12 @@
 .RData
 .Ruserdata
 ignore/
-analyses/archive
+analyses/archive/
+analyses/analyses_cache/
+analyses/analyses_files/
+manuscript/archive/
+manuscript/manuscript_files/
+manuscript/.aux
+manuscript/.fff
+manuscript/.log
+manuscript/.out
