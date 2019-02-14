@@ -1,9 +1,0 @@
-\begin{figure*}[hbt]
-\ifnextchar[{\eatarg}{}
-
-\centering
-\includegraphics{manuscript_files/figure-latex/Results-1.pdf}
-\caption{\label{fig:Results}Overview of results}
-\end{figure*}
-\efloatseparator
- 
