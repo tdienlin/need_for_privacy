@@ -1,243 +1,166 @@
-name,content
-�..V1,#WERT!
-V2,#WERT!
-V3,#WERT!
-V4,#WERT!
-V5,#WERT!
-V6,#WERT!
-V7,#WERT!
-TIM.STA,#WERT!
-TIM.END,#WERT!
-V10,#WERT!
-ID,#WERT!
-INTRO_01,#WERT!
-INTRO_02,#WERT!
-PRI.ATT.SOC_1,"Even if it helps with an important societal cause, it is bad when government agencies violate people's privacy."
-PRI.ATT.SOC_2,"Even when there are good reasons, the government should never be allowed to access user data from companies (e.g., Amazon, Facebook, or Google)."
-PRI.ATT.SOC_3,"In order to spend tax income well, it's okay that the government collects as much information as possible about its citizens."
-PRI.ATT.SOC_4,Government agencies should be able to monitor everyone's email and other online activities in order to prevent future terrorist attacks.
-PRI.ATT.SOC_5,It should be possible to surf online completely anonymously.
-PRI.ATT.SOC_6,It is bad that Facebook requires their users to register with their real name.
-PRI.ATT.SOC_7,Video surveillance of public places is a good thing because it helps stop crime.
-PRI.ATT.SOC_8,We would be safer if people were required to always carry an ID card with them.
-PRI.ATT.INT_1,People should not disclose too much personal information on social network sites.
-PRI.ATT.INT_2,The benefits of using Facebook outweigh the risks.
-PRI.ATT.INT_3,It is good that people can nowadays communicate about personal things with others online.
-PRI.ATT.INT_4,Disclosing information online could lead to negative consequences as bosses or future employers might disapprove of it.
-PRI.ATT.INT_5,A person can only be happy if he or she has someone to talk to in person about very personal things.
-PRI.ATT.INT_6,It is good if people know as many things as possible about one another.
-PRI.ATT.INT_7,Even in close friendships it is good when there are some secrets.
-PRI.ATT.INT_8,"When in doubt, it's better to withhold one's personal point of view than to share it with people one doesn't know that well."
-PER.SOC_1,I shy away from crowds of people.
-PER.SOC_2,I like to have a lot of people around me.
-PER.SOC_3,I usually prefer to do things alone.
-PER.SOC_4,I really feel the need for other people if I am by myself for long.
-PER.SOC_5,I prefer jobs that let me work alone without being bothered by other people.
-PER.SOC_6,I'd rather vacation at a popular beach than an isolated cabin in the woods.
-PER.SOC_7,Social gatherings are usually boring to me.
-PER.SOC_8,I enjoy parties with lots of people.
-PCO.INTRO,#WERT!
-PRI.CON.SOC.COL_1,It bothers me when government agencies ask me for personal information.
-PRI.CON.SOC.COL_2,"When government agencies ask me for personal information, I sometimes think twice before providing it."
-PRI.CON.SOC.COL_3,I am concerned that government agencies are collecting too much personal information about me.
-PRI.CON.SOC.SEC_1,"I am concerned that when I give personal information to a government agency, the government will use my information for other reasons."
-PRI.CON.SOC.SEC_2,I am concerned that government agencies would sell my personal information in their computer databases to other companies.
-PRI.CON.SOC.SEC_3,I am concerned that government agencies would share my personal information with others in the government without my authorization.
-PRI.CON.SOC.IMP_1,I am concerned that government agencies databases containing my personal information are not protected from unauthorized access.
-PRI.CON.SOC.IMP_2,I am concerned that government agencies do not devote enough resources to preventing unauthorized access to my personal information.
-PRI.CON.SOC.IMP_3,I am concerned that government agencies do not take enough steps to make sure that unauthorized people cannot access my personal information in their computers.
-PRI.CON.SOC.AWA_1,I am concerned when I don't see a clear and conspicuous privacy policy on the website of a government agency.
-PRI.CON.SOC.AWA_2,It bothers me when I am not aware or knowledgeable about how my personal information will be used by government agencies.
-PRI.CON.SOC.AWA_3,"It bothers me when government agencies seeking my information do not disclose the way the data are collected, processed, and used."
-PRI.CON.SOC,I am concerned about my privacy being violated by government agencies.
-PRI.CON.INT_1,I am concerned about disclosing too much personal information on social network sites.
-PRI.CON.INT_2,I am concerned that for me the risks of using Facebook might outweigh the benefits of using Facebook.
-PRI.CON.INT_3,I am concerned about communicating personal things to others online.
-PRI.CON.INT_4,I am concerned about my boss or future employer discovering information about me online that they might disapprove of.
-PRI.CON.INT_5,I am concerned about not having someone to talk about very personal things.
-PRI.CON.INT_6,I am concerned about too many people knowing too many things about me.
-PRI.CON.INT_7,I am concerned that some of my friends might know all my secrets.
-PRI.CON.INT_8,I am concerned that I sometimes share my personal point of view with others when it's not appropriate.
-PRI.CON.INT_9,I am concerned about my privacy being violated by other people online.
-PER.RIS_1,Over the years I've done some pretty stupid things.
-PER.RIS_2,I think things through before coming to a decision.
-PER.RIS_3,Occasionally I act first and think later.
-PER.RIS_4,I always consider the consequences before I take action.
-PER.RIS_5,I often do things on the spur of the moment.
-PER.RIS_6,I rarely make hasty decisions.
-PER.RIS_7,I plan ahead carefully when I go on a trip.
-PER.RIS_8,I think twice before I answer a question.
-PVA.SOC_1,Peace
-PVA.SOC_2,Freedom of Speech
-PVA.SOC_3,Social Equality
-PRI.VAL.SOC.COM,Privacy
-PVA.SOC_5,Safety
-PVA.SOC_6,Financial Wellbeing/Prosperity 
-PVA.INT_1,Intimate Relationships
-PVA.INT_2,Security
-PVA.INT_3,Financial Wellbeing/Prosperity
-PVA.INT_4,Fun
-PRI.VAL.INT.COM,Privacy
-PVA.INT_6,Freedom
-PRI.VAL_1,Privacy is one of the most valuable things in life.
-PRI.VAL_2,The value of privacy is underestimated.
-PRI.VAL_3,Privacy should be considered as an important value.
-PVA.INTRO,#WERT!
-PRI.VAL.SOC.SCE_1,#WERT!
-PRI.VAL.SOC.SCE_2,#WERT!
-PRI.VAL.INT.SCE_1,partners...
-PRI.VAL.INT.SCE_2,#WERT!
-PER.FEA_1,I am not a worrier.
-PER.FEA_2,I am easily frightened.
-PER.FEA_3,I rarely feel fearful or anxious.
-PER.FEA_4,I often feel tense and jittery.
-PER.FEA_5,I'm seldom apprehensive about the future.
-PER.FEA_6,I often worry about things that might go wrong.
-PER.FEA_7,I have fewer fears than most people.
-PER.FEA_8,Frightening thoughts sometimes come into my head.
-PRI.NEE_1,I prefer it when other people do not know much about me.
-PRI.NEE_2,"When given the chance, I prefer being incognito."
-PRI.NEE_3,I don't want personal information about me being publicly available.
-PRI.NEE_4,Not everybody needs to know everything about me.
-PRI.NEE.SOC_1,"I need government agencies to respect my privacy, even if that hinders a greater societal cause."
-PRI.NEE.SOC_2,"I need the information that companies (e.g., Amazon, Facebook, or Google) have about me to stay private so that the government can never access it."
-PRI.NEE.SOC_3,"I don't want the government to gather information about me, even if that makes it more difficult for them to spend tax income efficiently."
-PRI.NEE.SOC_4,"I don't want government agencies to monitor my personal communication, even if doing so prevents future terrorist attacks."
-PRI.NEE.SOC_5,I need to be able to surf online anonymously.
-PRI.NEE.SOC_6,I need to be able to use a fake name on social network sites to preserve my privacy.
-PRI.NEE.SOC_7,I feel the need to avoid places with video surveillance.
-PRI.NEE.SOC_8,I prefer not to carry my ID with me all the time to preserve my privacy.
-PRI.NEE.SOC_9,I feel the need to protect my privacy from government agencies.
-PRI.NEE.INT_1,I feel the need to disclose personal information about me on social network sites.
-PRI.NEE.INT_2,My need for privacy is so strong that it prevents me from using Facebook actively.
-PRI.NEE.INT_3,I don't feel the need to be able to communicate about very personal things with others online.
-PRI.NEE.INT_4,I need to know that my boss or future employers cannot find information about me online that they might disapprove of.
-PRI.NEE.INT_5,I always need a person to talk about personal things.
-PRI.NEE.INT_6,"I don't need to know a lot of things about people I interact with, as that might cause problems."
-PRI.NEE.INT_7,I don't feel the need to tell my friends all my secrets.
-PRI.NEE.INT_8,I sometimes feel the need to share my personal point of view with someone I don't know that well.
-PRI.NEE.INT_9,I feel the need to protect my privacy from other people.
-PER.TRA_1,I'm pretty set in my ways.
-PER.TRA_2,I think it's interesting to learn and develop new hobbies.
-PER.TRA_3,"Once I find the right way to do something, I stick to it."
-PER.TRA_4,I often try new and foreign foods.
-PER.TRA_5,I prefer to spend my time in familiar surroundings.
-PER.TRA_6,Sometimes I make changes around the house just to try something different.
-PER.TRA_7,"On a vacation, I prefer going back to a tried and true spot."
-PER.TRA_8,I follow the same route when I go someplace.
-PNE.SCC,#WERT!
-EXP.PRI.NEG.SOC_1,A government agency was accessing information about you that it wasn't authorized to access.
-EXP.PRI.NEG.SOC_2,"You have seen, read, or heard news of terrorist attacks that could have been avoided with greater government surveillance."
-EXP.PRI.NEG.SOC_3,You were disturbed by video surveillance in a public place.
-EXP.PRI.NEG.SOC_4,You were asked for your ID in a situation that you found inappropriate.
-EXP.PRI.NEG.SOC_5,You have been the victim of what you felt was an improper invasion of privacy by a government or law enforcement agency.
-EXP.PRI.NEG.SOC_6,A government or law enforcement official asked you questions that felt too personal for you.
-EXP.PRI.NEG.SOC_7,"A government or law enforcement agency publicly shared information about you, which led to negative consequences for you."
-EXP.PRI.NEG.INT_1,Something negative happened because you disclosed too much personal information on a social network site.
-EXP.PRI.NEG.INT_2,You've had a negative experience on Facebook.
-EXP.PRI.NEG.INT_3,Someone got access to an intimate online conversation that you wanted to keep private.
-EXP.PRI.NEG.INT_4,"Someone got access to information or a photo about you online, which you didn't want that person to see."
-EXP.PRI.NEG.INT_5,"Someone shared private information about you, which led to negative consequences."
-EXP.PRI.NEG.INT_6,A good friend of yours was upset because of a secret that you shared with him or her.
-EXP.PRI.NEG.INT_7,"You shared your personal point of view with someone you didn't know that well, which led to negative consequences."
-EXP.PRI.NEG.INT_8,You have been the victim of what you felt was an improper invasion of privacy by other people.
-EXP.PRI.POS.SOC_1,"You have seen, read, or heard news of a terrorist attack that was avoided because of government surveillance."
-EXP.PRI.POS.SOC_2,You personally felt safer because of government surveillance.
-EXP.PRI.POS.SOC_3,You felt protected because of video surveillance.
-EXP.PRI.POS.SOC_4,A crime against you or someone you know was solved with the help of video surveillance.
-EXP.PRI.POS.SOC_5,You have benefitted personally from government surveillance.
-EXP.PRI.POS.INT_1,You benefitted from disclosing personal information on social network sites.
-EXP.PRI.POS.INT_2,You had a positive experience on Facebook.
-EXP.PRI.POS.INT_3,An old friend was able to find you because of personal information you shared online.
-EXP.PRI.POS.INT_4,Your professional career has benefitted because of disclosing information about yourself online
-EXP.PRI.POS.INT_5,You felt happy after you talked with someone in person about a personal issue. 
-EXP.PRI.POS.INT_6,Revealing a secret to a friend helped you in some way.
-EXP.PRI.POS.INT_7,"You shared your personal point of view with someone you didn't know that well, which led to nice consequences for you."
-EXP.PRI.POS.INT_8,You have benefitted personally in some way from disclosing private information to another person.
-PER.ITG_1,I am often tempted to take things that do not belong to me.
-PER.ITG_2,I don't think there's anything wrong with cheating a little on one's income tax forms.
-PER.ITG_3,"When traveling, I would always declare everything at customs."
-PER.ITG_4,"If I found a wallet, I would not be tempted to keep any money."
-PER.ITG_5,"If I could get away with it, I would leave a restaurant or bar without paying the bill."
-PER.ITG_6,I would buy stolen merchandise if the price was right.
-PER.ITG_7,I would mislead people when it comes to my academic achievements.
-PER.ITG_8,I think that there are circumstances when people are justified in cheating.
-PER.ITG_9,I have cheated on an exam in school.
-PER.ITG_10,"I have watched movies or listened to music online for free, even though I knew doing so violated copyright law."
-PER.ITG_11,Certain things that I have done would be considered illegal in some places.
-BEH.PRI.SOC_1,I publicly voiced that I am against government surveillance.
-BEH.PRI.SOC_2,I took part in demonstrations against government surveillance.
-BEH.PRI.SOC_3,I used software or apps that allow for anonymous surfing of the web.
-BEH.PRI.SOC_4,I used apps or software that allow for anonymous communication.
-BEH.PRI.SOC_5,I didn't use my real name on social network sites.
-BEH.PRI.SOC_6,I avoided places with video surveillance.
-BEH.PRI.SOC_7,I decided not to carry my ID with me in order to protect my privacy.
-BEH.PRI.SOC_8,I changed my behavior or computer settings in some way so that government agencies now get as little information about me as possible.
-BEH.PRI.INT_1,I decided against disclosing personal information on social network sites.
-BEH.PRI.INT_2,I used Facebook cautiously.
-BEH.PRI.INT_3,I stopped online conversations when they were getting too personal.
-BEH.PRI.INT_4,I made sure not to reveal personal information online that my boss or future employer might disapprove of.
-BEH.PRI.INT_5,I decided against telling a person an intimate thing.
-BEH.PRI.INT_6,I did not tell the whole story to someone.
-BEH.PRI.INT_7,I decided against telling my best friend a secret.
-BEH.PRI.INT_8,I decided not to express my personal point of view to someone I didn't know that well.
-BEH.PRI_1,"I restricted access to information on social network sites (e.g., by using friends lists)."
-BEH.PRI_2,I avoided being in photos that might have been posted online.
-BEH.PRI_3,I removed cookies.
-BEH.PRI_4,I checked my computer for spy ware.
-BFI.10.EXT_1,... is reserved.
-BFI.10.EXT_2,"... is outgoing, sociable."
-BFI.10.AGR_1,... is generally trusting.
-BFI.10.AGR_2,... tends to find fault with others.
-BFI.10.CON_1,... does a thorough job.
-BFI.10.CON_2,... tends to be lazy.
-BFI.10.NEU_1,"... is relaxed, handles stress well."
-BFI.10.NEU_2,... gets nervous easily.
-BFI.10.OPE_1,... has an active imagination.
-BFI.10.OPE_2,... has few artistic interests.
-SOC.DES_1,I like to gossip at times.
-SOC.DES_2,There have been occasions when I took advantage of someone.
-SOC.DES_3,I'm always willing to admit it when I make a mistake.
-SOC.DES_4,I sometimes try to get even rather than forgive and forget.
-SOC.DES_5,At times I have really insisted on having things my own way.
-SOC.DES_6,I have never been irked when people expressed ideas very different from my own.
-SOC.DES_7,There have been occasions when I felt like smashing things.
-PSE,#WERT!
-ENV.PRI.SOC_1,People I know say that they are against government surveillance.
-ENV.PRI.SOC_2,People I know take part in demonstrations against government surveillance.
-ENV.PRI.SOC_3,People I know feel they have experienced significant privacy invasions by government agencies.
-ENV.PRI.SOC_4,People I know use software or apps that allow for anonymous surfing of the web.
-ENV.PRI.SOC_5,People I know use apps or software that allow them to communicate anonymously.
-ENV.PRI.SOC_6,People I know use their real name on social network sites.
-ENV.PRI.SOC_7,People I know avoid places with video surveillance.
-ENV.PRI.SOC_8,People I know try to avoid giving their personal information to government agencies.
-ENV.PRI.INT_1,People I know disclose personal information on social network sites.
-ENV.PRI.INT_2,People I know use Facebook cautiously.
-ENV.PRI.INT_3,People I know communicate about personal things with others online.
-ENV.PRI.INT_4,People I know disclose personal information online that their boss or future employer could disapprove of.
-ENV.PRI.INT_5,People I know are often willing to talk about personal things with just about anyone.
-ENV.PRI.INT_6,People I know sometimes do not tell the whole story.
-ENV.PRI.INT_7,My best friend would tell me all of his or her secrets.
-ENV.PRI.INT_8,People I know would rather express their personal point of view than to withhold it.
-ENV.PRI_1,"People I know restrict access to their profiles on social network sites (e.g., by using friends lists)."
-ENV.PRI_2,People I know avoid being in photos that might be posted online.
-ENV.PRI_3,People I know remove cookies on their computer.
-ENV.PRI_4,People I know check their computer for spy ware.
-SES.INTRO,#WERT!
-SES.SEX,#WERT!
-SES.SEX_TEXT,TEXT
-SES.AGE,#WERT!
-SES.RAC,#WERT!
-SES.RAC_TEXT,TEXT
-SES.EDU_1,#WERT!
-SES.EDU_2,#WERT!
-SES.JOB_1,#WERT!
-SES.JOB_2,#WERT!
-SES.MON_1,#WERT!
-SES.MON_2,#WERT!
-Outro,#WERT!
-LocationLatitude,#WERT!
-LocationLongitude,#WERT!
-LocationAccuracy,#WERT!
-X,#WERT!
-TIM.DIF,#WERT!
+name,content,content_breaks
+soc_1,I shy away from crowds of people.,"I shy away from crowds of
+people."
+soc_2,I like to have a lot of people around me.,"I like to have a lot of
+people around me."
+soc_3,I usually prefer to do things alone.,"I usually prefer to do things
+alone."
+soc_4,I really feel the need for other people if I am by myself for long.,"I really feel the need for
+other people if I am by
+myself for long."
+soc_5,I prefer jobs that let me work alone without being bothered by other people.,"I prefer jobs that let me
+work alone without being
+bothered by other people."
+soc_6,I’d rather vacation at a popular beach than an isolated cabin in the woods.,"I’d rather vacation at a
+popular beach than an
+isolated cabin in the woods."
+soc_7,Social gatherings are usually boring to me.,"Social gatherings are usually
+boring to me."
+soc_8,I enjoy parties with lots of people.,"I enjoy parties with lots of
+people."
+ria_1,Over the years I’ve done some pretty stupid things.,"Over the years I’ve done some
+pretty stupid things."
+ria_2,I think things through before coming to a decision.,"I think things through before
+coming to a decision."
+ria_3,Occasionally I act first and think later.,"Occasionally I act first and
+think later."
+ria_4,I always consider the consequences before I take action.,"I always consider the
+consequences before I take
+action."
+ria_5,I often do things on the spur of the moment.,"I often do things on the spur
+of the moment."
+ria_6,I rarely make hasty decisions.,"I rarely make hasty
+decisions."
+ria_7,I plan ahead carefully when I go on a trip.,"I plan ahead carefully when I
+go on a trip."
+ria_8,I think twice before I answer a question.,"I think twice before I answer
+a question."
+pri_nee_gen_1,I prefer it when other people do not know much about me.,"I prefer it when other people
+do not know much about me."
+pri_nee_gen_2,"When given the chance, I prefer being incognito.","When given the chance, I
+prefer being incognito."
+pri_nee_gen_3,I don’t want personal information about me being publicly available.,"I don’t want personal
+information about me being
+publicly available."
+pri_nee_gen_4,Not everybody needs to know everything about me.,"Not everybody needs to know
+everything about me."
+pri_nee_soc_1,"I need government agencies to respect my privacy, even if that hinders a greater societal cause.","I need government agencies to
+respect my privacy, even if
+that hinders a greater
+societal cause."
+pri_nee_soc_2,"I need the information that companies (e.g., Amazon, Facebook, or Google) have about me to stay private so that the government can never access it.","I need the information that
+companies (e.g., Amazon,
+Facebook, or Google) have
+about me to stay private so
+that the government can never
+access it."
+pri_nee_soc_3,"I don’t want the government to gather information about me, even if that makes it more difficult for them to spend tax income efficiently.","I don’t want the government
+to gather information about
+me, even if that makes it
+more difficult for them to
+spend tax income efficiently."
+pri_nee_soc_4,"I don’t want government agencies to monitor my personal communication, even if doing so prevents future terrorist attacks.","I don’t want government
+agencies to monitor my
+personal communication, even
+if doing so prevents future
+terrorist attacks."
+pri_nee_soc_5,I need to be able to surf online anonymously.,"I need to be able to surf
+online anonymously."
+pri_nee_soc_6,I need to be able to use a fake name on social network sites to preserve my privacy.,"I need to be able to use a
+fake name on social network
+sites to preserve my privacy."
+pri_nee_soc_7,I feel the need to avoid places with video surveillance.,"I feel the need to avoid
+places with video
+surveillance."
+pri_nee_soc_8,I prefer not to carry my ID with me all the time to preserve my privacy.,"I prefer not to carry my ID
+with me all the time to
+preserve my privacy."
+pri_nee_soc_9,I feel the need to protect my privacy from government agencies.,"I feel the need to protect my
+privacy from government
+agencies."
+pri_nee_int_1,I feel the need to disclose personal information about me on social network sites.,"I feel the need to disclose
+personal information about me
+on social network sites."
+pri_nee_int_2,My need for privacy is so strong that it prevents me from using Facebook actively.,"My need for privacy is so
+strong that it prevents me
+from using Facebook actively."
+pri_nee_int_3,I don’t feel the need to be able to communicate about very personal things with others online.,"I don’t feel the need to be
+able to communicate about
+very personal things with
+others online."
+pri_nee_int_4,I need to know that my boss or future employers cannot find information about me online that they might disapprove of.,"I need to know that my boss
+or future employers cannot
+find information about me
+online that they might
+disapprove of."
+pri_nee_int_5,I always need a person to talk about personal things.,"I always need a person to
+talk about personal things."
+pri_nee_int_6,"I don’t need to know a lot of things about people I interact with, as that might cause problems.","I don’t need to know a lot of
+things about people I
+interact with, as that might
+cause problems."
+pri_nee_int_7,I don’t feel the need to tell my friends all my secrets.,"I don’t feel the need to tell
+my friends all my secrets."
+pri_nee_int_8,I sometimes feel the need to share my personal point of view with someone I don’t know that well.,"I sometimes feel the need to
+share my personal point of
+view with someone I don’t
+know that well."
+pri_nee_int_9,I feel the need to protect my privacy from other people.,"I feel the need to protect my
+privacy from other people."
+tra_1,I’m pretty set in my ways.,I’m pretty set in my ways.
+tra_2,I think it’s interesting to learn and develop new hobbies.,"I think it’s interesting to
+learn and develop new
+hobbies."
+tra_3,"Once I find the right way to do something, I stick to it.","Once I find the right way to
+do something, I stick to it."
+tra_4,I often try new and foreign foods.,"I often try new and foreign
+foods."
+tra_5,I prefer to spend my time in familiar surroundings.,"I prefer to spend my time in
+familiar surroundings."
+tra_6,Sometimes I make changes around the house just to try something different.,"Sometimes I make changes
+around the house just to try
+something different."
+tra_7,"On a vacation, I prefer going back to a tried and true spot.","On a vacation, I prefer going
+back to a tried and true
+spot."
+tra_8,I follow the same route when I go someplace.,"I follow the same route when
+I go someplace."
+itg_1,I am often tempted to take things that do not belong to me.,"I am often tempted to take
+things that do not belong to
+me."
+itg_2,I don't think there's anything wrong with cheating a little on one's income tax forms.,"I don't think there's
+anything wrong with cheating
+a little on one's income tax
+forms."
+itg_3,"When traveling, I would always declare everything at customs.","When traveling, I would
+always declare everything at
+customs."
+itg_4,"If I found a wallet, I would not be tempted to keep any money.","If I found a wallet, I would
+not be tempted to keep any
+money."
+itg_5,"If I could get away with it, I would leave a restaurant or bar without paying the bill.","If I could get away with it,
+I would leave a restaurant or
+bar without paying the bill."
+itg_6,I would buy stolen merchandise if the price was right.,"I would buy stolen
+merchandise if the price was
+right."
+itg_7,I would mislead people when it comes to my academic achievements.,"I would mislead people when
+it comes to my academic
+achievements."
+itg_8,I think that there are circumstances when people are justified in cheating.,"I think that there are
+circumstances when people are
+justified in cheating."
+itg_9,I have cheated on an exam in school.,"I have cheated on an exam in
+school."
+itg_10,"I have watched movies or listened to music online for free, even though I knew doing so violated copyright law.","I have watched movies or
+listened to music online for
+free, even though I knew
+doing so violated copyright
+law."
+itg_11,Certain things that I have done would be considered illegal in some places.,"Certain things that I have
+done would be considered
+illegal in some places."
+age,Please indicate your age,Please indicate your age
+inc,About how much money do you have at your disposal each month?,"About how much money do you
+have at your disposal each
+month?"
