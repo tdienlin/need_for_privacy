@@ -308,4 +308,4 @@ We declare no competing interests.
 
 # Data Accessibility Statement
 
-All the stimuli, presentation materials, participant data, analysis scripts, and a reproducible version of the manuscript can be found on this paper’s project page on the open science framework (https://osf.io/7ncpk/?view_only=38283fd9262646378e4ba1e19c9d707f). In addition, we invite everyone to suggest changes and improvements to the manuscript via our github (https://github.com/tdienlin/need_for_privacy/tree/master).
+All the stimuli, presentation materials, participant data, analysis scripts, and a reproducible version of the manuscript can be found in the Online Supplementary Material on the open science framework (https://osf.io/7ncpk/). In addition, we invite everyone to suggest changes and improvements to the manuscript via our github (https://github.com/tdienlin/need_for_privacy/).
