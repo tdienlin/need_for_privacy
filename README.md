@@ -1,6 +1,6 @@
 # Study description
 
-In this study, we analyze how the need for privacy can be predicted by means of personality. The data come from the project "Measures of Privacy and Personality" (see https://osf.io/st7p6/). 
+In this study, we analyze how the need for privacy can be predicted by means of personality. Predictors include sociability, integrity, anxiety, risk avoidance, and traditionality. The data come from the project "Measures of Privacy and Personality" (see https://osf.io/st7p6/). 
 
 # Content
 
